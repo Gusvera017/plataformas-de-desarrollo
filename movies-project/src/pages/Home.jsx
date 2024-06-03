@@ -1,12 +1,11 @@
 import Menu from "../components/Menu";
 
 const Home = () => {
-    return (
-        <div>
-            HOLA DESDE LA HOME
-            <Menu />
-        </div>
-    )
+  return (
+    <div>
+      <Menu />
+    </div>
+  )
 }
 
 export default Home;

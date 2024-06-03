@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-      <div className='container'>
+      <div className='container-fluid mt-2'>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Home />}/>

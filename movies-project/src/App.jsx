@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Menu from './components/Menu';
 import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './context/ProtectedRoute';
 //import './App.css'
 
 function App() {
@@ -10,10 +11,16 @@ function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <Menu />
+        <ProtectedRoute>
+          <Menu />
+        </ProtectedRoute>
         <div className='container-fluid mt-2'>
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            } />
             <Route path='/login' element={<Login />} />
             {/* 
             <Route path='/productos/:idProducto' element={<h1>Productos con id dinámico</h1>} /> 

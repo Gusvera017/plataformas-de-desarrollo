@@ -1,0 +1,11 @@
+.container-home {
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.title-home {
+    display: flex;
+    justify-content: center;
+}

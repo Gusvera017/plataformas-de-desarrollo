@@ -1,0 +1,41 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .login-card {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 340px;
+        min-height: 460px;
+        border: 1px solid gray;
+        border-radius: 2px;
+        box-shadow: 0 6px 5px 1px rgba(163,163,163,0.6);
+        margin-top: 80px;
+        margin-bottom: 50px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+.button-container-login {
+    .btn {
+        background-color: blueviolet;
+        border-color: blueviolet;
+
+        &:hover {
+            background-color: rgb(87, 27, 144);
+            border-color: rgb(87, 27, 144);
+        }
+
+        &:active {
+            background-color: rgb(56, 17, 93) !important;
+            border-color: rgb(56, 17, 93) !important;
+        }
+
+        &:focus {
+            background-color: rgb(56, 17, 93) !important;
+            border-color: rgb(56, 17, 93) !important;
+        }
+    }
+}

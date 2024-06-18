@@ -4,7 +4,6 @@ import Login from './pages/Login';
 import Menu from './components/Menu';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './context/ProtectedRoute';
-//import './App.css'
 
 function App() {
 

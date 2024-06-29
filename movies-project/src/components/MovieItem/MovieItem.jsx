@@ -4,13 +4,21 @@ const MovieItem = ({ movies }) => {
 
   if (!movies) return null;
 
+  const truncateTitle = (title, maxLength) => {
+    if (title.length > maxLength) {
+      return title.substring(0, maxLength) + "...";
+    } else {
+      return title;
+    }
+  };
+
   return (
-    <div className="d-flex flex-wrap justify-content-around" style={{ overflowX: "auto" }}>
+    <div className="container-movieItem">
       {movies.map(movie => (
-        <div key={movie.id} className="m-3" style={{ minWidth: "200px", maxWidth: "200px" }}>
-          <img src={movie.medium_cover_image} alt={movie.title} style={{ maxWidth: "100%", height: "auto" }} />
-          <h4>{movie.title}</h4>
-          <p>{movie.year}</p>
+        <div key={movie.id} className="card-movieItem">
+          <img src={movie.medium_cover_image} alt={movie.title} className="img-movieCover-movieItem" />
+          <h5 className="mt-2">{truncateTitle(movie.title, 20)}</h5>
+          <p>Año: {movie.year}</p>
         </div>
       ))}
     </div>

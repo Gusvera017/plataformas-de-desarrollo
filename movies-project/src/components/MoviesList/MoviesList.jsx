@@ -1,22 +1,23 @@
 import { useState, useEffect } from "react";
-import MoviesList from "./MoviesList";
+import "./MoviesList.css";
+import MovieItem from "../MovieItem/MovieItem";
 
-const ApiService = () => {
+const MoviesList = () => {
 
     const [movies, setMovies] = useState([])
     
     const getMovies = async () => {
-        const url = "https://yts.mx/api/v2/list_movies.json?page=1&limit=10";
+        const url = "https://yts.mx/api/v2/list_movies.json?page=1&limit=15";
         try {
             const response = await fetch(url);
             if (!response.ok) {
-                throw new Error('Failed to fetch movies');
+                throw new Error("Upsss, algo salió mal al buscar las peliculas");
             }
             const responseJson = await response.json();
             console.log(responseJson);
             setMovies(responseJson.data.movies);
         } catch (error) {
-            console.error('Error fetching movies:', error);
+            console.error("Error: ", error);
         }
     }
 
@@ -25,7 +26,7 @@ const ApiService = () => {
     },[])
 
     return (
-        <MoviesList movies={movies} />
+        <MovieItem movies={movies} />
     )
 }
-export default ApiService;
+export default MoviesList;

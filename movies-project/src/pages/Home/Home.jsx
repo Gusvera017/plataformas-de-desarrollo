@@ -1,6 +1,5 @@
-
 import "./Home.css"
-import ApiService from "../../components/ApiService";
+import MoviesList from "../../components/MoviesList/MoviesList";
 
 const Home = () => {
   return (
@@ -8,7 +7,7 @@ const Home = () => {
       <div className="title-home mb-5">
         <h1>BIENVENID#! a The Movies Project</h1>
       </div>
-          <ApiService />
+          <MoviesList />
     </div>
 
   )

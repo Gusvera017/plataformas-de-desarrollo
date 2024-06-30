@@ -7,7 +7,7 @@ const MoviesList = () => {
     const [movies, setMovies] = useState([])
     
     const getMovies = async () => {
-        const url = "https://yts.mx/api/v2/list_movies.json?page=1&limit=15";
+        const url = "https://yts.mx/api/v2/list_movies.json?page=1&limit=48";
         try {
             const response = await fetch(url);
             if (!response.ok) {

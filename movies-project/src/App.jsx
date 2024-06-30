@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Menu from './components/Menu';
+import MovieDetail from './components/MovieDetail/MovieDetail';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './context/ProtectedRoute';
 
@@ -20,16 +21,16 @@ function App() {
                 <Home />
               </ProtectedRoute>
             } />
+            <Route path='/movie/:id' element={
+              <ProtectedRoute>
+                <MovieDetail />
+              </ProtectedRoute>
+            } />
             <Route path='/login' element={<Login />} />
-            {/* 
-            <Route path='/productos/:idProducto' element={<h1>Productos con id dinámico</h1>} /> 
-          */}
           </Routes>
         </div>
       </BrowserRouter>
     </AuthProvider>
-
-
   )
 }
 

@@ -31,4 +31,5 @@
 .card-movieItem h5,
 .card-movieItem p {
     text-align: center;
+    text-decoration: none !important;
 }

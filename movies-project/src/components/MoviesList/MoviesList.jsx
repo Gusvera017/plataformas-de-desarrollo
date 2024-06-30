@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Spinner } from "react-bootstrap";
+import LoadingSpinner from "../ReusableComponents/LoadingSpinner";
 import "./MoviesList.css";
 import MovieItem from "../MovieItem/MovieItem";
 
@@ -30,9 +30,7 @@ const MoviesList = () => {
 
   return (
     isLoading ? (
-      <div className="container-spinner-status">
-        <Spinner variant="danger" />
-      </div>
+      <LoadingSpinner />
     ) : (
       <MovieItem movies={movies} />
     )

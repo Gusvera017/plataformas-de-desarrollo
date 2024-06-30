@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Spinner } from 'react-bootstrap';
+import LoadingSpinner from '../ReusableComponents/LoadingSpinner';
 import "./MovieDetail.css"
 
 const MovieDetail = () => {
@@ -31,9 +31,7 @@ const MovieDetail = () => {
 
   if (isLoading) {
     return (
-      <div className="container-spinner-status">
-        <Spinner variant="danger" />
-      </div>
+      <LoadingSpinner />
     );
   }
 
@@ -41,7 +39,7 @@ const MovieDetail = () => {
     <div>
       <h2>{movie.title}</h2>
       <p>Año: {movie.year}</p>
-      <p>Genero/s: {movie.genres}</p>
+      <p>Genero/s: {movie.genres.join(" / ")}</p>
       <p>Descripción: {movie.description_full}</p>
       <img src={movie.medium_cover_image} alt={movie.title} />
       {movie.yt_trailer_code && (

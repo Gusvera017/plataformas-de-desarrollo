@@ -6,6 +6,7 @@ const MovieDetail = () => {
     const [movie, setMovie] = useState(null);
 
     useEffect(() => {
+        //console.log("El id de la pelicula elegida es: ", id);
         const fetchMovie = async () => {
             try {
                 const response = await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`);
@@ -28,6 +29,7 @@ const MovieDetail = () => {
         <div>
             <h2>{movie.title}</h2>
             <p>Año: {movie.year}</p>
+            <p>Genero/s: {movie.genres}</p>
             <p>Descripción: {movie.description_full}</p>
             <img src={movie.medium_cover_image} alt={movie.title} />
             {movie.yt_trailer_code && (

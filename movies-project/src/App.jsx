@@ -5,6 +5,7 @@ import Menu from './components/Menu';
 import MovieDetail from './components/MovieDetail/MovieDetail';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './context/ProtectedRoute';
+import Footer from './components/Footer/Footer';
 
 function App() {
 
@@ -29,6 +30,9 @@ function App() {
             <Route path='/login' element={<Login />} />
           </Routes>
         </div>
+        <ProtectedRoute>
+          <Footer />
+        </ProtectedRoute>
       </BrowserRouter>
     </AuthProvider>
   )

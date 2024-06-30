@@ -7,7 +7,7 @@ const Home = () => {
       <div className="title-home mb-5">
         <h1>BIENVENID#! a The Movies Project</h1>
       </div>
-          <MoviesList />
+      <MoviesList />
     </div>
 
   )

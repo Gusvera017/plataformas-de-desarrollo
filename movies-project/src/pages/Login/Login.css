@@ -1,41 +1,42 @@
 .login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .login-card {
     display: flex;
-    justify-content: center;
     align-items: center;
-    .login-card {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        width: 340px;
-        min-height: 460px;
-        border: 1px solid #808080;
-        border-radius: 2px;
-        box-shadow: 0 6px 5px 1px #64646499;
-        margin-top: 80px;
-        margin-bottom: 50px;
-        padding-left: 30px;
-        padding-right: 30px;
-    }
+    flex-direction: column;
+    width: 340px;
+    min-height: 460px;
+    border: 1px solid #808080;
+    border-radius: 2px;
+    box-shadow: 0 6px 5px 1px #64646499;
+    margin-top: 80px;
+    margin-bottom: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }
 
 .button-container-login {
-    .btn {
-        background-color: #8a2be2;
-        border-color: #8a2be2;
+  .btn {
+    background-color: #8a2be2;
+    border-color: #8a2be2;
 
-        &:hover {
-            background-color: #571b90;
-            border-color: #571b90;
-        }
-
-        &:active {
-            background-color: #38115d !important;
-            border-color: #38115d !important;
-        }
-
-        &:focus {
-            background-color: #38115d !important;
-            border-color: #38115d !important;
-        }
+    &:hover {
+      background-color: #571b90;
+      border-color: #571b90;
     }
+
+    &:active {
+      background-color: #38115d !important;
+      border-color: #38115d !important;
+    }
+
+    &:focus {
+      background-color: #38115d !important;
+      border-color: #38115d !important;
+    }
+  }
 }

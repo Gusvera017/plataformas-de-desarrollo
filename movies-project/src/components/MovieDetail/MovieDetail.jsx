@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import LoadingSpinner from '../ReusableComponents/LoadingSpinner';
+import { Button } from 'react-bootstrap';
 import "./MovieDetail.css"
 
 const MovieDetail = () => {
@@ -41,11 +42,16 @@ const MovieDetail = () => {
         <div className='row'>
           <img src={movie.medium_cover_image} alt={movie.title} />
         </div>
-        <div className='col' style={{marginLeft: "20px"}}>
+        <div className='col' style={{marginLeft: "20px", border: "solid 2px grey", borderRadius: "5px", margin: "1rem", padding: "1rem"}}>
+          
           <h2>{movie.title}</h2>
           <p>Año: {movie.year}</p>
           <p>Genero/s: {movie.genres.join(" / ")}</p>
           <p>Descripción: {movie.description_full}</p>
+          <div className='pt-5'>
+            <Button>Agregar +</Button>
+          </div>
+
         </div>
       </div>
 
@@ -53,12 +59,12 @@ const MovieDetail = () => {
         {movie.yt_trailer_code ? (
           <iframe
             title="trailer"
-            width="560"
+            width="100%"
             height="315"
             src={`https://www.youtube.com/embed/${movie.yt_trailer_code}`}
             allowFullScreen
           ></iframe>
-        ) : <div>TRAILER NO DISPONIBLE</div>
+        ) : <div style={{backgroundColor: "red", padding: "20px"}}>TRAILER NO DISPONIBLE</div>
         
         }
       </div>

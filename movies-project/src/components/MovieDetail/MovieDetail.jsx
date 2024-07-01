@@ -36,21 +36,32 @@ const MovieDetail = () => {
   }
 
   return (
-    <div>
-      <h2>{movie.title}</h2>
-      <p>Año: {movie.year}</p>
-      <p>Genero/s: {movie.genres.join(" / ")}</p>
-      <p>Descripción: {movie.description_full}</p>
-      <img src={movie.medium_cover_image} alt={movie.title} />
-      {movie.yt_trailer_code && (
-        <iframe
-          title="trailer"
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/${movie.yt_trailer_code}`}
-          allowFullScreen
-        ></iframe>
-      )}
+    <div className='m-5'>
+      <div className='d-flex mb-5'>
+        <div className='row'>
+          <img src={movie.medium_cover_image} alt={movie.title} />
+        </div>
+        <div className='col' style={{marginLeft: "20px"}}>
+          <h2>{movie.title}</h2>
+          <p>Año: {movie.year}</p>
+          <p>Genero/s: {movie.genres.join(" / ")}</p>
+          <p>Descripción: {movie.description_full}</p>
+        </div>
+      </div>
+
+      <div className='d-flex justify-content-center mb-5'>
+        {movie.yt_trailer_code ? (
+          <iframe
+            title="trailer"
+            width="560"
+            height="315"
+            src={`https://www.youtube.com/embed/${movie.yt_trailer_code}`}
+            allowFullScreen
+          ></iframe>
+        ) : <div>TRAILER NO DISPONIBLE</div>
+        
+        }
+      </div>
     </div>
   );
 }

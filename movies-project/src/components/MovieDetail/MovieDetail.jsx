@@ -37,25 +37,25 @@ const MovieDetail = () => {
   }
 
   return (
-    <div className='m-5'>
-      <div className='d-flex mb-5'>
+    <div className='container-detail'>
+      <div className='card-container-detail'>
         <div className='row'>
           <img src={movie.medium_cover_image} alt={movie.title} />
         </div>
-        <div className='col' style={{marginLeft: "20px", border: "solid 2px grey", borderRadius: "5px", margin: "1rem", padding: "1rem"}}>
+        <div className='col card-container-data'>
           
           <h2>{movie.title}</h2>
           <p>Año: {movie.year}</p>
           <p>Genero/s: {movie.genres.join(" / ")}</p>
           <p>Descripción: {movie.description_full}</p>
-          <div className='pt-5'>
+          <div className='container-btn-agregar'>
             <Button>Agregar +</Button>
           </div>
 
         </div>
       </div>
 
-      <div className='d-flex justify-content-center mb-5'>
+      <div className='container-trailer-iframes'>
         {movie.yt_trailer_code ? (
           <iframe
             title="trailer"
@@ -64,7 +64,7 @@ const MovieDetail = () => {
             src={`https://www.youtube.com/embed/${movie.yt_trailer_code}`}
             allowFullScreen
           ></iframe>
-        ) : <div style={{backgroundColor: "red", padding: "20px"}}>TRAILER NO DISPONIBLE</div>
+        ) : <div className='message-trailer-404'>TRAILER NO DISPONIBLE</div>
         
         }
       </div>

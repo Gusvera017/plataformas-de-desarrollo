@@ -1,0 +1,33 @@
+.container-detail {
+    margin: 3rem;
+}
+
+.card-container-detail {
+    display: flex;
+    margin-bottom: 3rem;
+}
+
+.card-container-data {
+    box-shadow: 0 0 5px 1px #64646499; 
+    border-radius: 5px; 
+    margin: 1rem 0rem 1rem 1rem;
+    padding: 1rem;
+}
+
+.container-btn-agregar {
+    padding-top: 3rem;
+}
+
+.container-trailer-iframe {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+.message-trailer-404 {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 5px; 
+    box-shadow: 0 0 5px 1px #64646499;
+}

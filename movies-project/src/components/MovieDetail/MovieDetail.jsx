@@ -40,7 +40,7 @@ const MovieDetail = () => {
     <div className='container-detail'>
       <div className='card-container-detail'>
         <div className='row'>
-          <img src={movie.medium_cover_image} alt={movie.title} />
+          <img className='img-property-detail' src={movie.medium_cover_image} alt={movie.title} />
         </div>
         <div className='col card-container-data'>
           

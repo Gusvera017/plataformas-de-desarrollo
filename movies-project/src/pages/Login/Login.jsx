@@ -1,15 +1,33 @@
+import { useState } from 'react';
 import './Login.css';
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
-  const { login } = useAuth();
+  const { login, loginAdmin } = useAuth();
   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    login();
-    navigate("/");
+    //console.log("MAIL: ", email);
+    //console.log("PASSWORD: ", password);
+    if (email === "admin@admin.com" && password === "1234") {
+      loginAdmin();
+      navigate("/admin");
+    } else {
+      login();
+      navigate("/");
+    }
+  }
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  }
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
   }
 
   return (
@@ -21,11 +39,11 @@ const Login = () => {
           </div>
           <div className="w-100 mt-2 mb-3">
             <label htmlFor="exampleInputEmail" className="form-label"> Ingrese su email </label>
-            <input type="email" className="form-control" id="exampleInputEmail" />
+            <input type="email" className="form-control" id="exampleInputEmail" value={email} onChange={handleEmailChange} />
           </div>
           <div className="w-100 mt-2 mb-3">
             <label htmlFor="exampleInputPassword" className="form-label"> Ingrese su contraseña </label>
-            <input type="password" className="form-control" id="exampleInputPassword" />
+            <input type="password" className="form-control" id="exampleInputPassword" value={password} onChange={handlePasswordChange} />
           </div>
           <div className='w-100 mt-5 button-container-login'>
             <button type="button" className="w-100 btn btn-primary" onClick={handleLogin}>Ingresar</button>

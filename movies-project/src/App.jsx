@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
+import Admin from './pages/Admin/Admin';
 import Menu from './components/Menu';
 import MovieDetail from './components/MovieDetail/MovieDetail';
 import { AuthProvider } from './context/AuthContext';
@@ -18,12 +19,17 @@ function App() {
         <div className='container-fluid mt-2'>
           <Routes>
             <Route path='/' element={
-              <ProtectedRoute>
+              <ProtectedRoute admin={false}>
                 <Home />
               </ProtectedRoute>
             } />
+            <Route path='/admin' element={
+              <ProtectedRoute admin={true}>
+                <Admin />
+              </ProtectedRoute>
+            } />
             <Route path='/movie/:id' element={
-              <ProtectedRoute>
+              <ProtectedRoute admin={false}>
                 <MovieDetail />
               </ProtectedRoute>
             } />

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "./Admin.css"
 
 const Admin = () => {

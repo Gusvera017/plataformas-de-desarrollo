@@ -9,26 +9,27 @@ const MovieDetail = () => {
   const [movie, setMovie] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    //console.log("El id de la pelicula elegida es: ", id);
-    const fetchMovie = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`);
-        if (!response.ok) {
-          throw new Error('Upsss, no se encontró la pelicula');
-        }
-        const data = await response.json();
-        setMovie(data.data.movie);
-      } catch (error) {
-        console.error('Error: ', error);
-      } finally {
-        setIsLoading(false);
+  const getMovie = async () => {
+    setIsLoading(true);
+    const urlWithId = `https://yts.mx/api/v2/movie_details.json?movie_id=${id}`;
+    try {
+      const response = await fetch(urlWithId);
+      if (!response.ok) {
+        throw new Error('Upsss, no se encontró la pelicula');
       }
-    };
+      const responseJson = await response.json();
+      //console.log("Listado de las pelis con su info: ", responseJson);
+      setMovie(responseJson.data.movie);
+    } catch (error) {
+      console.error("Error: ", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-    fetchMovie();
-  }, [id]);
+  useEffect(() => {
+    getMovie();
+  }, [id])
 
   if (isLoading) {
     return (
@@ -43,7 +44,7 @@ const MovieDetail = () => {
           <img className='img-property-detail' src={movie.medium_cover_image} alt={movie.title} />
         </div>
         <div className='col card-container-data'>
-          
+
           <h2>{movie.title}</h2>
           <p>Año: {movie.year}</p>
           <p>Genero/s: {movie.genres.join(" / ")}</p>
@@ -65,7 +66,7 @@ const MovieDetail = () => {
             allowFullScreen
           ></iframe>
         ) : <div className='message-trailer-404'>TRAILER NO DISPONIBLE</div>
-        
+
         }
       </div>
     </div>

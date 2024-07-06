@@ -18,7 +18,7 @@ const MovieDetail = () => {
         throw new Error('Upsss, no se encontró la pelicula');
       }
       const responseJson = await response.json();
-      //console.log("Listado de las pelis con su info: ", responseJson);
+      //console.log("La pelicula es: ", responseJson);
       setMovie(responseJson.data.movie);
     } catch (error) {
       console.error("Error: ", error);

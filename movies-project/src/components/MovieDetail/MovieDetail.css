@@ -20,8 +20,14 @@
   padding: 1rem;
 }
 
+.description-text-limit {
+  max-height: 120px;
+  overflow: overlay;
+}
+
 .container-btn-agregar {
   padding-top: 3rem;
+  padding-right: 1rem;
 }
 
 .container-trailer-iframe {

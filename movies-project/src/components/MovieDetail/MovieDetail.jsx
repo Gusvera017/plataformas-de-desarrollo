@@ -37,6 +37,12 @@ const MovieDetail = () => {
     );
   }
 
+  //Función para descargar el torrent de la peli (720p).
+  const downloadMovie = () => {
+    //console.log("La peli es: ", movie);
+    window.open(`${movie.torrents[0].url}`, '_blank');
+  }
+
   return (
     <div className='container-detail'>
       <div className='card-container-detail'>
@@ -48,9 +54,15 @@ const MovieDetail = () => {
           <h2>{movie.title}</h2>
           <p>Año: {movie.year}</p>
           <p>Genero/s: {movie.genres.join(" / ")}</p>
-          <p>Descripción: {movie.description_full}</p>
-          <div className='container-btn-agregar'>
-            <Button>Agregar +</Button>
+          <p className='description-text-limit'>Descripción: {movie.description_full}</p> {/* Lo seteo para que se vea 5 lineas */}
+
+          <div className='d-flex'>
+            <div className='container-btn-agregar'>
+              <Button>Agregar +</Button>
+            </div>
+            <div className='container-btn-agregar'>
+              <Button onClick={downloadMovie}>Descargar</Button>
+            </div>
           </div>
 
         </div>

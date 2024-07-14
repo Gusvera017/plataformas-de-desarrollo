@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const pool = require('./db');
+const bcrypt = require('bcrypt');
 
 const app = express();
 const port = 8888;

@@ -51,7 +51,7 @@ const Login = () => {
             <input type="password" className="form-control" id="exampleInputPassword" value={password} onChange={handlePasswordChange} />
           </div>
           <div className="w-100 mt-2 mb-3">
-            <Link to="/register" onClick={handleRedirectRegister}>Quiero registrarme</Link>
+            <Link to="/register" onClick={handleRedirectRegister}>¿No tenés usuario? Registrarte acá</Link>
           </div>
           <div className='w-100 mt-5 button-container-login'>
             <button type="button" className="w-100 btn btn-primary" onClick={handleLogin}>Ingresar</button>

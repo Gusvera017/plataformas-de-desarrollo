@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Register.css';
 import { useAuth } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
 
@@ -14,6 +14,10 @@ const Register = () => {
   const handleRegister = () => {
       login();
       navigate("/");
+  }
+
+  const handleRedirectLogin = () => {
+    navigate("/login");
   }
 
   const handleNameChange = (e) => {
@@ -46,6 +50,9 @@ const Register = () => {
           <div className="w-100 mt-2 mb-3">
             <label htmlFor="exampleInputPassword" className="form-label"> Ingrese su contraseña </label>
             <input type="password" className="form-control" id="exampleInputPassword" value={password} onChange={handlePasswordChange} />
+          </div>
+          <div className="w-100 mt-2 mb-3">
+            <Link to="/login" onClick={handleRedirectLogin}>Ya tengo usuario. Ingresá acá</Link>
           </div>
           <div className='w-100 mt-5 button-container-register'>
             <button type="button" className="w-100 btn btn-primary" onClick={handleRegister}>Registrarme</button>

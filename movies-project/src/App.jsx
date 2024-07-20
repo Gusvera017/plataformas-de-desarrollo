@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
 import Admin from './pages/Admin/Admin';
+import User from './pages/User/User';
 import Menu from './components/Menu';
 import MovieDetail from './components/MovieDetail/MovieDetail';
 import { AuthProvider } from './context/AuthContext';
@@ -13,32 +15,26 @@ function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <ProtectedRoute>
-          <Menu />
-        </ProtectedRoute>
+        <Menu />
         <div className='container-fluid mt-2'>
           <Routes>
-            <Route path='/' element={
-              <ProtectedRoute admin={false}>
-                <Home />
-              </ProtectedRoute>
-            } />
+            <Route path='/' element={<Home />} />
             <Route path='/admin' element={
               <ProtectedRoute admin={true}>
                 <Admin />
               </ProtectedRoute>
             } />
-            <Route path='/movie/:id' element={
+            <Route path='/user' element={
               <ProtectedRoute admin={false}>
-                <MovieDetail />
+                <User />
               </ProtectedRoute>
             } />
+            <Route path='/movie/:id' element={<MovieDetail />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
           </Routes>
         </div>
-        <ProtectedRoute>
-          <Footer />
-        </ProtectedRoute>
+        <Footer />
       </BrowserRouter>
     </AuthProvider>
   )

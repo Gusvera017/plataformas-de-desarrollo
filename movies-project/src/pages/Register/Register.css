@@ -1,14 +1,14 @@
-.login {
+.register {
   display: flex;
   justify-content: center;
   align-items: center;
 
-  .login-card {
+  .register-card {
     display: flex;
     align-items: center;
     flex-direction: column;
     width: 340px;
-    min-height: 500px;
+    min-height: 550px;
     border: 1px solid #808080;
     border-radius: 2px;
     box-shadow: 0 6px 5px 1px #64646499;
@@ -19,7 +19,7 @@
   }
 }
 
-.button-container-login {
+.button-container-register {
   .btn {
     background-color: #8a2be2;
     border-color: #8a2be2;

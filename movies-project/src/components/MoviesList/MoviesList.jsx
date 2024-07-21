@@ -30,7 +30,9 @@ const MoviesList = () => {
 
   return (
     isLoading ? (
-      <LoadingSpinner />
+      <div className='spinner-position'>
+          <LoadingSpinner />
+        </div>
     ) : (
       <MovieItem movies={movies} />
     )

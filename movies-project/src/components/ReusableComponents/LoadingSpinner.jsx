@@ -4,7 +4,7 @@ import "./LoadingSpinner.css";
 const LoadingSpinner = () => {
   return (
     <div className="container-spinner-status">
-      <Spinner variant="danger" />
+      <Spinner style={{color: '#8a2be2'}}/>
     </div>
   )
 }

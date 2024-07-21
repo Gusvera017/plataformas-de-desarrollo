@@ -43,15 +43,15 @@ const Login = () => {
             <h1>THE MOVIES PROJECT</h1>
           </div>
           <div className="w-100 mt-2 mb-2">
-            <label htmlFor="exampleInputEmail" className="form-label"> Ingrese su email </label>
+            <label htmlFor="exampleInputEmail" className="form-label"> Ingresá tu email </label>
             <input type="email" className="form-control" id="exampleInputEmail" value={email} onChange={handleEmailChange} />
           </div>
           <div className="w-100 mt-2 mb-2">
-            <label htmlFor="exampleInputPassword" className="form-label"> Ingrese su contraseña </label>
+            <label htmlFor="exampleInputPassword" className="form-label"> Ingresá tu contraseña </label>
             <input type="password" className="form-control" id="exampleInputPassword" value={password} onChange={handlePasswordChange} />
           </div>
           <div className="w-100 mt-2 mb-2">
-            <Link to="/register" onClick={handleRedirectRegister}>¿No tenés usuario? Registrarte acá</Link>
+            <Link to="/register" onClick={handleRedirectRegister}>¿No tenés usuario? Registrate acá</Link>
           </div>
           <div className='w-100 mt-4 button-container-login'>
             <button type="button" className="w-100 btn btn-primary" onClick={handleLogin}>Ingresar</button>

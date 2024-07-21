@@ -41,20 +41,20 @@ const Register = () => {
           </div>
           <div className='d-flex row'>
             <div className="mt-2 mb-2" style={{width: '20rem'}}>
-              <label htmlFor="exampleInputName" className="form-label"> Ingrese su nombre </label>
+              <label htmlFor="exampleInputName" className="form-label"> Ingresá tu nombre </label>
               <input type="text" className="form-control" id="exampleInputName" value={name} onChange={handleNameChange} />
             </div>
             <div className="mt-2 mb-2" style={{width: '20rem'}}>
-              <label htmlFor="exampleInputEmail" className="form-label"> Ingrese su email </label>
+              <label htmlFor="exampleInputEmail" className="form-label"> Ingresá tu email </label>
               <input type="email" className="form-control" id="exampleInputEmail" value={email} onChange={handleEmailChange} />
             </div>
           </div>
           <div className="w-100 mt-2 mb-2">
-            <label htmlFor="exampleInputPassword" className="form-label"> Ingrese su contraseña </label>
+            <label htmlFor="exampleInputPassword" className="form-label"> Ingresá tu contraseña </label>
             <input type="password" className="form-control" id="exampleInputPassword" value={password} onChange={handlePasswordChange} />
           </div>
           <div className="w-100 mt-2 mb-2">
-            <Link to="/login" onClick={handleRedirectLogin}>Ya tengo usuario. Ingresá acá</Link>
+            <Link to="/login" onClick={handleRedirectLogin}>Ya tenés usuario. Ingresá acá</Link>
           </div>
           <div className='w-100 mt-4 button-container-register'>
             <button type="button" className="w-100 btn btn-primary" onClick={handleRegister}>Registrarme</button>

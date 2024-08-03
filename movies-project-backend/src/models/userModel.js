@@ -1,5 +1,5 @@
 //Conexión a la base de datos.
-const connection = require('../../db');
+const pool = require('../../db');
 
 //Fechas
 const { formatToday } = require("../helpers/dateHelper");
@@ -14,7 +14,7 @@ exports.create = async ({ name, email, password, is_admin }) => {
     `;
 
   try {
-    await connection.query(query, [name, email, password_crypt, (is_admin ? 1 : 0), formatToday(), formatToday()]);
+    await pool.query(query, [name, email, password_crypt, (is_admin ? 1 : 0), formatToday(), formatToday()]);
   } catch (error) {
     throw error;
   }
@@ -29,7 +29,7 @@ exports.login = async ({ email, password }) => {
     `;
 
   try {
-    [results] = await connection.query(query, [email]);
+    [results] = await pool.query(query, [email]);
     //Verificamos si encontró el usuario.
     if (results.length == 1) {
       const user = results[0];

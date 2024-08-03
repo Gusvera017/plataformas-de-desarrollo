@@ -63,7 +63,7 @@ exports.refreshToken = (req, res) => {
   if (bearer !== 'Bearer' || !token) {
     return res.status(401).json({ success: false, message: 'Formato de token no válido' });
   }
-  
+
   try {
     const user = jwt.verify(token, process.env.JWT_REFRESH_TOKEN_SECRET);
     //Información que se va a hashear.

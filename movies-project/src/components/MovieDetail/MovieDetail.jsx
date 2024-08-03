@@ -29,6 +29,9 @@ const MovieDetail = () => {
 
   useEffect(() => {
     getMovie();
+
+    //Elimina el scroll de la pantalla cuando se selecciona las ultimas peliculas.
+    window.scrollTo(0, 0);
   }, [id])
 
   if (isLoading) {

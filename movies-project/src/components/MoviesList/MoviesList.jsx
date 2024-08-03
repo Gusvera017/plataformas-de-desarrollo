@@ -8,7 +8,7 @@ const MoviesList = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const getMovies = async () => {
-    const url = "https://yts.mx/api/v2/list_movies.json?page=15&limit=48";
+    const url = "https://yts.mx/api/v2/list_movies.json?page=30&limit=50";
     try {
       const response = await fetch(url);
       if (!response.ok) {
@@ -26,6 +26,9 @@ const MoviesList = () => {
 
   useEffect(() => {
     getMovies();
+
+    //Elimina el scroll de la pantalla cuando se vuelve a la Home.
+    window.scrollTo(0, 0);
   }, [])
 
   return (

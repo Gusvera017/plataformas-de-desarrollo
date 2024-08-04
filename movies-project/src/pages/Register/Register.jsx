@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import './Register.css';
 import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from '../../context/AuthContext'; 
 import axios from 'axios';
 
 const Register = () => {
 
+  const { login } = useAuth();
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -18,11 +20,13 @@ const Register = () => {
           password
         });
         if (response.status === 200) {
+          //Si el registro se realiza correctamente, redirijo al usuario auntenticado a la Home
           console.log("Usuario registrado exitosamente:", response);
-          navigate("/login");
+          await login(email, password);
+          navigate("/");
         }
       } catch (error) {
-        console.error("Error al intentar registrar un usuario: ", error);
+        console.error("Falló el registro del usuario, error: ", error);
         throw error;
       }
     }

@@ -21,7 +21,6 @@ exports.login = async (req, res) => {
     if (user == null) {
       res.json({ success: false, message: 'Credenciales incorrectas' });
     } else {
-
       const playload = {
         ID: user.id,
         name: user.name,
@@ -44,7 +43,8 @@ exports.login = async (req, res) => {
         success: true,
         message: 'Inicio de sesión exitoso',
         accessToken,
-        refreshToken
+        refreshToken,
+        is_admin: playload.is_admin
       });
     }
   } catch (error) {
@@ -58,7 +58,7 @@ exports.refreshToken = (req, res) => {
   if (!authHeader) {
     return res.status(401).json({ success: false, message: 'Token de autenticación no proporcionado' });
   }
-  // El valor del encabezado de autorización debe tener el formato "Bearer tu_token_jwt_aqui"
+  
   const [bearer, token] = authHeader.split(' ');
   if (bearer !== 'Bearer' || !token) {
     return res.status(401).json({ success: false, message: 'Formato de token no válido' });

@@ -19,6 +19,7 @@ app.use((req, res, next) => {
 
 app.listen(port, () => {
   console.log('Servidor iniciado en: http://localhost:' + port);
+  console.log("HOLA HOLA")
 });
 
 app.use(require('./src/routes/userRoute'));

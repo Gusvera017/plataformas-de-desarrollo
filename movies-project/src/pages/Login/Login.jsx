@@ -2,23 +2,30 @@ import { useState } from 'react';
 import './Login.css';
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
 
-  const { login, loginAdmin } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    //console.log("MAIL: ", email);
-    //console.log("PASSWORD: ", password);
-    if (email === "admin@admin.com" && password === "1234") {
-      loginAdmin();
-      navigate("/admin");
-    } else {
-      login();
-      navigate("/");
+  const handleLogin = async () => {
+    try {
+      console.log('Email:', email);
+      console.log('Password:', password);
+      const request = await axios.post("http://localhost:8888/login", {
+        email,
+        password
+      });
+      if (request.data.success) {
+        login(request.data);
+        navigate("/");
+      }
+      console.log("data: ", request);
+    } catch (error) {
+      console.error("Ha surgido un error, por favor intente más tarde", error);
     }
   }
 

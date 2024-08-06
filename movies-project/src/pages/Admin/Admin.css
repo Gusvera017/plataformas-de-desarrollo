@@ -10,3 +10,10 @@
   display: flex;
   justify-content: center;
 }
+
+.pruebatabla {
+  display: flex;
+  .table {
+    justify-content: center;
+  }
+}

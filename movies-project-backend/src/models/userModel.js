@@ -14,7 +14,7 @@ exports.create = async ({ name, email, password, is_admin }) => {
     `;
 
   try {
-    await pool.query(query, [name, email, password_crypt, (is_admin ? 1 : 0), formatToday(), formatToday()]);
+    await pool.query(query, [name, email, password_crypt, (is_admin ? '1' : '0'), formatToday(), formatToday()]);
   } catch (error) {
     throw error;
   }

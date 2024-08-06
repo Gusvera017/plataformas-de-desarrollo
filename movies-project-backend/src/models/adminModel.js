@@ -15,3 +15,17 @@ exports.getAllUsers = async () => {
     throw error;
   }
 };
+
+exports.deleteUserById = async (id) => {
+  const query = `
+    DELETE 
+    FROM users 
+    WHERE id = ?
+  `;
+  try {
+    const [result] = await pool.query(query, [id]);
+    return result.affectedRows;
+  } catch (error) {
+    throw error;
+  }
+};

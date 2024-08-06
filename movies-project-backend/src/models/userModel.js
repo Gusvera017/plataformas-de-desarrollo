@@ -30,15 +30,11 @@ exports.login = async ({ email, password }) => {
 
   try {
     [results] = await pool.query(query, [email]);
-    console.log('Database query result:', results);
+    
     //Verificamos si encontró el usuario.
     if (results.length == 1) {
       const user = results[0];
-      console.log('User found:', user);
-      console.log('User password:', password);
-      console.log('User user.password:', user.password);
       const is_password = await bcrypt.compare(password, user.password);
-      console.log('Password match:', is_password);
       return is_password ? user : null;
     } else {
       return null;

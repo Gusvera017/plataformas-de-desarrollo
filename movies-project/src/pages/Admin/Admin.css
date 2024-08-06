@@ -1,11 +1,12 @@
 .container-admin {
-    padding-left: 50px;
-    padding-right: 50px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
-  
-  .title-admin {
-    display: flex;
-    justify-content: center;
-  }
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-bottom: 80px;
+}
+
+.title-admin {
+  display: flex;
+  justify-content: center;
+}

@@ -29,3 +29,19 @@ exports.deleteUserById = async (id) => {
     throw error;
   }
 };
+
+exports.updateUserById = async (id, updateData) => {
+  const { name, email, is_admin } = updateData;
+  const query = `
+    UPDATE users
+    SET name = ?, email = ?, is_admin = ?
+    WHERE id = ?
+  `;
+  try {
+    const [result] = await pool.query(query, [name, email, (is_admin ? '0' : '1'), id]);
+    console.log("ResultsOnUpdate: ", result)
+    return result.affectedRows;
+  } catch (error) {
+    throw error;
+  }
+};

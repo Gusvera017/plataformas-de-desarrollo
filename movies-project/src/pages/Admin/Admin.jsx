@@ -8,7 +8,7 @@ const Admin = () => {
 
   const [users, setUsers] = useState([]);
   const [editingUser, setEditingUser] = useState(null);
-  const [formData, setFormData] = useState({ name: '', email: '', is_admin: '0' });
+  const [formData, setFormData] = useState({ name: '', email: '', is_admin: '' });
   const { token } = useAuth();
 
   const getUsers = async () => {
@@ -60,7 +60,7 @@ const Admin = () => {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (response.data.success) {
-        // Actualiza la lista de usuarios
+        // Actualizo la lista de usuarios
         setUsers(users.map(user => (user.id === editingUser.id ? { ...user, ...formData } : user)));
         setEditingUser(null);
       } else {
@@ -85,90 +85,111 @@ const Admin = () => {
           <p style={{ fontSize: '20px' }}>Desde aquí podrás administrar a los usuarios del sitio </p>
         </div>
 
-        <div>
-          <h1 className="d-flex justify-content-center col">Lista de Usuarios Activos</h1>
+        {
+          !editingUser &&
+          <>
+            <div className='mb-5'>
+              <h1 className="d-flex justify-content-center col">Lista de Usuarios Activos</h1>
+            </div>
 
-          {
-            !editingUser &&
-            <table>
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Nombre</th>
-                  <th>Email</th>
-                  <th>Admin</th>
-                  <th>Editar</th>
-                  <th>Eliminar</th>
-                </tr>
-              </thead>
-              <tbody>
-                {users.map(user => (
-                  <tr key={user.id}>
-                    <td>{user.id}</td>
-                    <td>{user.name}</td>
-                    <td>{user.email}</td>
-                    <td>{user.is_admin === '1' ? 'Si' : 'No'}</td>
-                    <td>
-                      <Button
-                        variant='warning'
-                        onClick={() => handleEditClick(user)}
-                      >
-                        Editar
-                      </Button>
-                    </td>
-                    <td>
-                      <Button
-                        variant='danger'
-                        onClick={() => deleteUser(user.id)}
-                      >
-                        Borrar
-                      </Button>
-                    </td>
+            <div style={{ marginLeft: '22rem' }}>
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Admin</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          }
+                </thead>
+                <tbody>
+                  {users.map(user => (
+                    <tr key={user.id}>
+                      <td>{user.id}</td>
+                      <td>{user.name}</td>
+                      <td>{user.email}</td>
+                      <td>{user.is_admin === '1' ? 'Si' : 'No'}</td>
+                      <td>
+                        <Button
+                          variant='warning'
+                          onClick={() => handleEditClick(user)}
+                        >
+                          Editar
+                        </Button>
+                      </td>
+                      <td>
+                        <Button
+                          variant='danger'
+                          onClick={() => deleteUser(user.id)}
+                        >
+                          Borrar
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        }
 
-        </div>
+
         {editingUser && (
-          <div>
-            <h2>Editar Usuario</h2>
-            <Form onSubmit={handleUpdate}>
-              <Form.Group controlId="formName">
-                <Form.Label>Nombre</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                />
-              </Form.Group>
-              <Form.Group controlId="formEmail">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </Form.Group>
-              <Form.Group controlId="formIsAdmin">
-                <Form.Label>Admin</Form.Label>
-                <Form.Control
-                  as="select"
-                  name="is_admin"
-                  value={formData.is_admin}
-                  onChange={handleChange}
-                >
-                  <option value={false}>No</option>
-                  <option value={true}>Sí</option>
-                </Form.Control>
-              </Form.Group>
-              <Button variant="primary" type="submit">Actualizar</Button>
-              <Button variant="secondary" onClick={() => setEditingUser(null)}>Cancelar</Button>
-            </Form>
-          </div>
+          <>
+            <div className='d-flex justify-content-center'>
+              <h2>Editar Usuario</h2>
+            </div>
+            <div className='d-flex justify-content-center'>
+              <Form onSubmit={handleUpdate}>
+                <div style={{ width: '20rem', margin: '1rem' }}>
+                  <Form.Group controlId="formName">
+                    <Form.Label>Nombre</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                    />
+                  </Form.Group>
+                </div>
+                <div style={{ width: '20rem', margin: '1rem' }}>
+                  <Form.Group controlId="formEmail">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
+                  </Form.Group>
+                </div>
+                <div style={{ width: '20rem', margin: '1rem' }}>
+                  <Form.Group controlId="formIsAdmin">
+                    <Form.Label>Admin</Form.Label>
+                    <Form.Control
+                      as="select"
+                      name="is_admin"
+                      value={formData.is_admin}
+                      onChange={handleChange}
+                    >
+                      <option value={false}>No</option>
+                      <option value={true}>Sí</option>
+                    </Form.Control>
+                  </Form.Group>
+                </div>
+                <div className='d-flex justify-content-center'>
+                  <div style={{ marginLeft: '1rem', marginRight: '1rem' }}>
+                    <Button variant="primary" type="submit">Actualizar</Button>
+                  </div>
+                  <div style={{ marginLeft: '1rem', marginRight: '1rem' }}>
+                    <Button variant="secondary" onClick={() => setEditingUser(null)}>Cancelar</Button>
+                  </div>
+                </div>
+              </Form>
+            </div>
+          </>
         )}
       </div>
     </>

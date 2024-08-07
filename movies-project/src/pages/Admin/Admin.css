@@ -12,8 +12,6 @@
 }
 
 .pruebatabla {
-  display: flex;
-  .table {
-    justify-content: center;
-  }
+  padding: 0px !important;
+  margin: 0.2rem !important;
 }

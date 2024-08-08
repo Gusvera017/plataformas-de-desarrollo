@@ -92,15 +92,19 @@ const Admin = () => {
               <h1 className="d-flex justify-content-center col">Lista de Usuarios Activos</h1>
             </div>
 
-            <div style={{ marginLeft: '22rem' }}>
+            <div style={{ marginLeft: '21rem' }}>
               <table>
                 <thead>
                   <tr>
-                    <th>ID</th>
+                    <div style={{ marginRight: '1rem' }}>
+                      <th>ID</th>
+                    </div>
                     <th>Nombre</th>
                     <th>Email</th>
                     <th>Admin</th>
-                    <th>Editar</th>
+                    <div style={{ marginLeft: '1rem', marginRight: '1rem' }}>
+                      <th>Editar</th>
+                    </div>
                     <th>Eliminar</th>
                   </tr>
                 </thead>
@@ -111,14 +115,16 @@ const Admin = () => {
                       <td>{user.name}</td>
                       <td>{user.email}</td>
                       <td>{user.is_admin === '1' ? 'Si' : 'No'}</td>
-                      <td>
-                        <Button
-                          variant='warning'
-                          onClick={() => handleEditClick(user)}
-                        >
-                          Editar
-                        </Button>
-                      </td>
+                      <div style={{ marginLeft: '1rem', marginRight: '1rem' }}>
+                        <td>
+                          <Button
+                            variant='warning'
+                            onClick={() => handleEditClick(user)}
+                          >
+                            Editar
+                          </Button>
+                        </td>
+                      </div>
                       <td>
                         <Button
                           variant='danger'

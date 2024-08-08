@@ -71,7 +71,7 @@ exports.refreshToken = (req, res) => {
     // Ahora, user contiene información del usuario. Puedes generar un nuevo accessToken.
     const newAccessToken = jwt.sign(playload, process.env.JWT_ACCESS_TOKEN_SECRET, { expiresIn: '15m' });
     // Devolver el nuevo accessToken al cliente
-    res.json({ success: true, accessToken: newAccessToken });
+    res.json({ success: true, accessToken: newAccessToken, is_admin: user.is_admin });
   } catch (error) {
     return res.status(401).json({ success: false, message: 'Token de autenticación inválido' });
   }

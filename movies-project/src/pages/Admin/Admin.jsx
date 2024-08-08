@@ -173,7 +173,7 @@ const Admin = () => {
                 </div>
                 <div style={{ width: '20rem', margin: '1rem' }}>
                   <Form.Group controlId="formIsAdmin">
-                    <Form.Label>Admin</Form.Label>
+                    <Form.Label>¿Será Administrador/a?</Form.Label>
                     <Form.Control
                       as="select"
                       name="is_admin"

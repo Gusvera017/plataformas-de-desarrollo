@@ -32,7 +32,7 @@ exports.login = async ({ email, password }) => {
     [results] = await pool.query(query, [email]);
     
     //Verificamos si encontró el usuario.
-    if (results.length > 0) {
+    if (results.length > 0) { //== 1
       const user = results[0];
       const is_password = await bcrypt.compare(password, user.password);
       return is_password ? user : null;

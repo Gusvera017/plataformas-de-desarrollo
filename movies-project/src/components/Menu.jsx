@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext";
 
 const Menu = () => {
 
-  const { userAuthenticated, isAdmin, logout } = useAuth();
+  const { userAuthenticated, isAdmin, logout, userID } = useAuth();
   const navigate = useNavigate();
 
   const handleRedirectAdmin = () => {
@@ -12,7 +12,9 @@ const Menu = () => {
   }
 
   const handleRedirectUser = () => {
-    navigate("/user");
+    if (userID) {
+      navigate(`/user/${userID}`);
+    } 
   }
 
   const handleLogout = () => {
@@ -33,7 +35,7 @@ const Menu = () => {
                 </li>}
               {(userAuthenticated && !isAdmin) &&
                 <li className="nav-item">
-                  <Link className="nav-link" to="/user" onClick={handleRedirectUser}>User</Link>
+                  <Link className="nav-link" /* to="/user" */ to={`/user/${userID}`} onClick={handleRedirectUser}>User</Link>
                 </li>}
               <li className="nav-item">
                 <Link className="nav-link" to="/">Home</Link>

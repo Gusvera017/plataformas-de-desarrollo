@@ -24,7 +24,7 @@ function App() {
                 <Admin />
               </ProtectedRoute>
             } />
-            <Route path='/user' element={
+            <Route path='/user/:id' element={
               <ProtectedRoute admin={false}>
                 <User />
               </ProtectedRoute>

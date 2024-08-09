@@ -32,13 +32,28 @@ exports.login = async ({ email, password }) => {
     [results] = await pool.query(query, [email]);
     
     //Verificamos si encontró el usuario.
-    if (results.length == 1) {
+    if (results.length > 0) {
       const user = results[0];
       const is_password = await bcrypt.compare(password, user.password);
       return is_password ? user : null;
     } else {
       return null;
     }
+  } catch (error) {
+    throw error;
+  }
+}
+
+exports.getUserById = async (id) => {
+  const query = `
+    SELECT id, name, email, is_admin
+    FROM users
+    WHERE id = ?
+  `;
+
+  try {
+    const [results] = await pool.query(query, [id]);
+    return results.length > 0 ? results[0] : null;
   } catch (error) {
     throw error;
   }

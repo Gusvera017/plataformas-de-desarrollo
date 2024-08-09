@@ -44,12 +44,27 @@ exports.login = async (req, res) => {
         message: 'Inicio de sesión exitoso',
         accessToken,
         refreshToken,
-        is_admin: playload.is_admin
+        is_admin: playload.is_admin,
+        userID: playload.ID
       });
     }
   } catch (error) {
     console.log(error);
     res.status(500).json({ success: false, message: 'Error al intentar iniciar sesión' });
+  }
+}
+
+exports.getUserInfo = async (req, res) => {
+  const userId = req.params.id;
+  try {
+    const user = await userModel.getUserById(userId);
+    if (user) {
+      res.json({ success: true, user });
+    } else {
+      res.status(404).json({ success: false, message: 'Usuario no encontrado :(' });
+    }
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Error al obtener la información del usuario' });
   }
 }
 

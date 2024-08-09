@@ -20,10 +20,10 @@ const Register = () => {
           password
         });
         if (response.status === 200) {
-          //Si el registro se realiza correctamente, redirijo al usuario auntenticado a la Home
+          //Si el registro se realiza correctamente, redirijo al usuario auntenticado a la Login
           console.log("Usuario registrado exitosamente:", response);
           await login(email, password);
-          navigate("/");
+          navigate("/login");
         }
       } catch (error) {
         console.error("Falló el registro del usuario, error: ", error);

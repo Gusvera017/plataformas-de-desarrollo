@@ -7,6 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [userAuthenticated, setUserAuthenticated] = useState(false);
   const [token, setToken] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [userID, setUserID] = useState(null);
 
   useEffect(() => {
     doRefreshToken();
@@ -24,6 +25,7 @@ export const AuthProvider = ({ children }) => {
           setUserAuthenticated(true);
           setToken(request.data.accessToken);
           setIsAdmin(request.data.is_admin);
+          setUserID(request.data.userID);
         }
       } catch (error) {
         console.error("Ha surgido un error, por favor intente más tarde", error);
@@ -33,11 +35,12 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
-  const login = ( {accessToken, refreshToken, is_admin} ) => {
+  const login = ( {accessToken, refreshToken, is_admin, userID} ) => {
     setUserAuthenticated(true);
     setToken(accessToken);
     localStorage.setItem("token", refreshToken);
     setIsAdmin(is_admin);
+    setUserID(userID);
   }
 
   const logout = () => {
@@ -45,10 +48,11 @@ export const AuthProvider = ({ children }) => {
     setToken(null);
     localStorage.removeItem("token");
     setIsAdmin(false);
+    setUserID(null);
   }
 
   return (
-    <AuthContext.Provider value={{ userAuthenticated, login, logout, token, isAdmin }}>
+    <AuthContext.Provider value={{ userAuthenticated, login, logout, token, isAdmin, userID }}>
       {children}
     </AuthContext.Provider>
   )
